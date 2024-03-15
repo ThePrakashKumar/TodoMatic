@@ -1,11 +1,13 @@
 "use client";
-const { useSelector } = require("react-redux");
+
+import AddTodoForm from "./AddTodoForm";
+import TodoList from "./TodoList";
 
 const TodoContainer = () => {
-  const todo = useSelector((state) => state.todos);
   return (
     <div>
-      <h1>Todo Container</h1>
+      <AddTodoForm />
+      <TodoList />
     </div>
   );
 };

@@ -7,9 +7,7 @@ import TodoContainer from "@/components/TodoContainer";
 export default function Home() {
   return (
     <Provider store={store}>
-      <div>
-        <TodoContainer />
-      </div>
+      <TodoContainer />
     </Provider>
   );
 }
