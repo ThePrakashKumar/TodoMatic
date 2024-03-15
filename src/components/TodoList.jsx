@@ -12,11 +12,11 @@ const TodoList = () => {
       {todo?.length !== 0 ? (
         <div>
           {todo?.map((t) => (
-            <Todo ley={t.id} todoDetails={t} />
+            <Todo key={t.id} todoDetails={t} />
           ))}
         </div>
       ) : (
-        <h2>NO Todo</h2>
+        <h2>No Todo</h2>
       )}
     </div>
   );

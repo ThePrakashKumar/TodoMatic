@@ -8,10 +8,11 @@ import {
 import { useDispatch } from "react-redux";
 const Todo = ({ todoDetails }) => {
   const dispatch = useDispatch();
-  const { id, complete, text, time } = todoDetails;
+  const { id, completed, text, time } = todoDetails;
 
   const [update, setUpdate] = useState(false);
   const [newTodo, setNewTodo] = useState(text);
+  const [checked, setChecked] = useState(completed);
 
   const handleDelete = (id) => {
     dispatch(deleteTodo({ id }));
@@ -24,7 +25,7 @@ const Todo = ({ todoDetails }) => {
       dispatch(
         editTodo({
           id: todo.id,
-          status: todo.status,
+          completed: todo.completed,
           text: newTodo,
           time: todo.time,
         })
@@ -32,8 +33,27 @@ const Todo = ({ todoDetails }) => {
       setUpdate((update) => !update);
     }
   };
+
+  const handleToggleTodo = (todo) => {
+    setChecked((checked) => !checked);
+    dispatch(
+      editTodo({
+        id: todo.id,
+        completed: !checked,
+        text: todo.text,
+        time: todo.time,
+      })
+    );
+  };
+
   return (
     <div className="flex">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={() => handleToggleTodo(todoDetails)}
+      />
+
       {update ? (
         <input
           type="text"

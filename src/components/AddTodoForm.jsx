@@ -14,7 +14,7 @@ const AddTodoForm = () => {
       dispatch(
         addTodo({
           id: uuid(),
-          complete: false,
+          completed: false,
           text: todo,
           time: new Date().toLocaleString(),
         })
