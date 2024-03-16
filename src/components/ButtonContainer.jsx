@@ -21,7 +21,7 @@ const ButtonContainer = () => {
           className={`h-10 bg-slate-800  text-slate-50 text-inherit hover:text-slate-800 hover:bg-slate-400 transition-all py-2 px-4 capitalize ${
             index === 0 && "rounded-l"
           } ${index === buttonValues.length - 1 && "rounded-r"} ${
-            filterStatus === button && "text-slate-800 bg-slate-400"
+            filterStatus === button && "text-slate-800 bg-white"
           }`}
         >
           {button}
