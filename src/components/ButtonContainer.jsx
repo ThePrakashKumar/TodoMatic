@@ -13,15 +13,14 @@ const ButtonContainer = () => {
   };
 
   return (
-    <div className="mt-4 w-fit mx-auto">
+    <div className="mt-4 w-fit mx-auto bg-white p-2 rounded">
       {buttonValues.map((button, index) => (
         <button
           key={button}
           onClick={() => handleFilter(button)}
-          className={`h-10 bg-slate-800  text-slate-50 text-inherit hover:text-slate-800 hover:bg-slate-400 transition-all py-2 px-4 capitalize ${
-            index === 0 && "rounded-l"
-          } ${index === buttonValues.length - 1 && "rounded-r"} ${
-            filterStatus === button && "text-slate-800 bg-white"
+          className={`h-8  text-slate-800 text-inherit m-1 py-1 px-4 capitalize rounded ${
+            filterStatus === button &&
+            "text-slate-800 bg-slate-100 border border-slate-300"
           }`}
         >
           {button}
