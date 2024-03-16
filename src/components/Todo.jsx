@@ -6,6 +6,8 @@ import {
   AiTwotoneEdit,
 } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+import { toast } from "sonner";
+
 const Todo = ({ todoDetails }) => {
   const dispatch = useDispatch();
   const { id, completed, text, time } = todoDetails;
@@ -16,6 +18,7 @@ const Todo = ({ todoDetails }) => {
 
   const handleDelete = (id) => {
     dispatch(deleteTodo({ id }));
+    toast.success("Todo Deleted!", { duration: 1000 });
   };
 
   const handleEdit = (todo) => {
@@ -47,39 +50,41 @@ const Todo = ({ todoDetails }) => {
   };
 
   return (
-    <div className="flex max-w-[96%] mx-auto bg-white h-10 p-4 rounded mb-1 items-center">
-      <input
-        className="w-5 h-5 mr-2 text-red-60 rounded accent-slate-800 cursor-pointer "
-        type="checkbox"
-        checked={checked}
-        onChange={() => handleToggleTodo(todoDetails)}
-      />
-
-      {update ? (
+    <>
+      <div className="flex max-w-[96%] mx-auto bg-white h-10 p-4 rounded mb-1 items-center">
         <input
-          className=" bg-slate-100 p-1 rounded w-full"
-          type="text"
-          value={newTodo}
-          onChange={(e) => {
-            setNewTodo(e.target.value);
-          }}
+          className="w-5 h-5 mr-2 text-red-60 rounded accent-slate-800 cursor-pointer "
+          type="checkbox"
+          checked={checked}
+          onChange={() => handleToggleTodo(todoDetails)}
         />
-      ) : (
-        <span className="w-full p-1">{text}</span>
-      )}
 
-      <button onClick={() => handleEdit(todoDetails)}>
         {update ? (
-          <AiTwotoneCheckCircle className="text-2xl text-slate-800 ml-1 cursor-pointer" />
+          <input
+            className=" bg-slate-100 p-1 rounded w-full"
+            type="text"
+            value={newTodo}
+            onChange={(e) => {
+              setNewTodo(e.target.value);
+            }}
+          />
         ) : (
-          <AiTwotoneEdit className="text-2xl text-slate-800 ml-1 cursor-pointer" />
+          <span className="w-full p-1">{text}</span>
         )}
-      </button>
-      <AiTwotoneDelete
-        className="text-2xl text-slate-800 ml-1 cursor-pointer"
-        onClick={() => handleDelete(id)}
-      />
-    </div>
+
+        <button onClick={() => handleEdit(todoDetails)}>
+          {update ? (
+            <AiTwotoneCheckCircle className="text-2xl text-slate-800 ml-1 cursor-pointer" />
+          ) : (
+            <AiTwotoneEdit className="text-2xl text-slate-800 ml-1 cursor-pointer" />
+          )}
+        </button>
+        <AiTwotoneDelete
+          className="text-2xl text-slate-800 ml-1 cursor-pointer"
+          onClick={() => handleDelete(id)}
+        />
+      </div>
+    </>
   );
 };
 
