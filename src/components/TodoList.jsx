@@ -1,11 +1,13 @@
 "use client";
-
+import { useEffect } from "react";
 import Todo from "./Todo";
+import { initializeTodo } from "@/lib/features/todo/todo.slice";
 
-const { useSelector } = require("react-redux");
+const { useSelector, useDispatch } = require("react-redux");
 
 const TodoList = () => {
   const { todo, filterStatus } = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
   const filteredTodo = todo?.filter((t) => {
     if (filterStatus === "active") {
@@ -16,7 +18,29 @@ const TodoList = () => {
       return true;
     }
   });
-  console.log(filteredTodo, filterStatus);
+
+  useEffect(() => {
+    const getInitialTodo = () => {
+      if (typeof window !== "undefined") {
+        const localTodo = window.localStorage.getItem("localTodoList");
+        if (localTodo) {
+          return JSON.parse(localTodo);
+        } else {
+          window.localStorage.setItem("localTodoList", JSON.stringify([]));
+          return [];
+        }
+      }
+    };
+
+    const initialTodo = getInitialTodo();
+
+    dispatch(
+      initializeTodo({
+        todo: initialTodo,
+      })
+    );
+  }, []);
+
   return (
     <div>
       {filteredTodo?.length !== 0 ? (
@@ -26,7 +50,7 @@ const TodoList = () => {
           ))}
         </div>
       ) : (
-        <h2>No Todo</h2>
+        <div>No Todo</div>
       )}
     </div>
   );
