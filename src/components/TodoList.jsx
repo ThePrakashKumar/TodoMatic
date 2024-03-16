@@ -4,6 +4,7 @@ import Todo from "./Todo";
 import { initializeTodo } from "@/lib/features/todo/todo.slice";
 import Loader from "./Loader";
 import NoTodo from "./NoTodo";
+import ActiveTodoCount from "./ActiveTodoCount";
 
 const { useSelector, useDispatch } = require("react-redux");
 
@@ -53,13 +54,17 @@ const TodoList = () => {
       {isLoading ? (
         <Loader />
       ) : filteredTodo?.length === 0 ? (
-        <NoTodo />
+        <>
+          <ActiveTodoCount />
+          <NoTodo />
+        </>
       ) : (
-        <div>
+        <>
+          <ActiveTodoCount />
           {filteredTodo?.map((t) => (
             <Todo key={t.id} todoDetails={t} />
           ))}
-        </div>
+        </>
       )}
     </div>
   );
