@@ -24,8 +24,9 @@ const AddTodoForm = () => {
   };
 
   return (
-    <div>
+    <form className="max-w-[96%] mx-auto bg-slate-100">
       <input
+        className="w-[80%] p-2 outline-none"
         type="text"
         placeholder="Add Todo"
         value={todo}
@@ -33,8 +34,13 @@ const AddTodoForm = () => {
           setTodo(e.target.value);
         }}
       />
-      <button onClick={(e) => handleAdd(e)}>Add</button>
-    </div>
+      <button
+        className="w-[20%] bg-slate-800 h-10 text-slate-50 text-inherit hover:text-slate-800 hover:bg-slate-400 transition-all"
+        onClick={(e) => handleAdd(e)}
+      >
+        Add
+      </button>
+    </form>
   );
 };
 

@@ -6,7 +6,7 @@ import TodoContainer from "@/components/TodoContainer";
 
 export default function Home() {
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-lg mx-auto">
       <Provider store={store}>
         <TodoContainer />
       </Provider>
