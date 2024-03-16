@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Todo from "./Todo";
 import { initializeTodo } from "@/lib/features/todo/todo.slice";
+import Loader from "./Loader";
 
 const { useSelector, useDispatch } = require("react-redux");
 
@@ -49,7 +50,7 @@ const TodoList = () => {
   return (
     <div>
       {isLoading ? (
-        <div>Loading</div>
+        <Loader />
       ) : filteredTodo?.length === 0 ? (
         <div>No Todo</div>
       ) : (
