@@ -1,5 +1,6 @@
 "use client";
 
+import ActiveTodoCount from "./ActiveTodoCount";
 import AddTodoForm from "./AddTodoForm";
 import ButtonContainer from "./ButtonContainer";
 import Navbar from "./Navbar";
@@ -11,6 +12,7 @@ const TodoContainer = () => {
       <Navbar />
       <AddTodoForm />
       <ButtonContainer />
+      <ActiveTodoCount />
       <TodoList />
     </div>
   );
