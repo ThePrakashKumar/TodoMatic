@@ -6,8 +6,10 @@ import TodoContainer from "@/components/TodoContainer";
 
 export default function Home() {
   return (
-    <Provider store={store}>
-      <TodoContainer />
-    </Provider>
+    <div className="max-w-xl mx-auto">
+      <Provider store={store}>
+        <TodoContainer />
+      </Provider>
+    </div>
   );
 }
