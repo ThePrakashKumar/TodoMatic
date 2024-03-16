@@ -47,8 +47,9 @@ const Todo = ({ todoDetails }) => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex max-w-[96%] mx-auto bg-white h-10 p-4 rounded mb-1 items-center">
       <input
+        className="w-5 h-5 mr-2 text-red-60 rounded accent-slate-800 cursor-pointer "
         type="checkbox"
         checked={checked}
         onChange={() => handleToggleTodo(todoDetails)}
@@ -56,6 +57,7 @@ const Todo = ({ todoDetails }) => {
 
       {update ? (
         <input
+          className=" bg-slate-100 p-1 rounded w-full"
           type="text"
           value={newTodo}
           onChange={(e) => {
@@ -63,13 +65,20 @@ const Todo = ({ todoDetails }) => {
           }}
         />
       ) : (
-        <span>{text}</span>
+        <span className="w-full p-1">{text}</span>
       )}
 
       <button onClick={() => handleEdit(todoDetails)}>
-        {update ? <AiTwotoneCheckCircle /> : <AiTwotoneEdit />}
+        {update ? (
+          <AiTwotoneCheckCircle className="text-2xl text-slate-800 ml-1 cursor-pointer" />
+        ) : (
+          <AiTwotoneEdit className="text-2xl text-slate-800 ml-1 cursor-pointer" />
+        )}
       </button>
-      <AiTwotoneDelete onClick={() => handleDelete(id)} />
+      <AiTwotoneDelete
+        className="text-2xl text-slate-800 ml-1 cursor-pointer"
+        onClick={() => handleDelete(id)}
+      />
     </div>
   );
 };

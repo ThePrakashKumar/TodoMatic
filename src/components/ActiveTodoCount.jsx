@@ -12,7 +12,7 @@ const ActiveTodoCount = () => {
   }, 0);
 
   return (
-    <p className="text-center text-slate-600 mt-2">{`${
+    <p className="text-center text-slate-600 my-2">{`${
       activeTodoCount || 0
     } Active Task${activeTodoCount > 1 ? "s" : ""}`}</p>
   );
